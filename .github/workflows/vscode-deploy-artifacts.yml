@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - vscode_extension/**s
+      - vscode_extension/**
 
 jobs:
   build_python_artifacts:
