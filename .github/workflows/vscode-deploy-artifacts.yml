@@ -2,6 +2,11 @@ name: Deploy VSCode Artifacts
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - vscode_extension
 
 jobs:
   build_python_artifacts:
@@ -33,10 +38,13 @@ jobs:
           extensionFile: vscode_extension/aac.vsix
           yarn: true
 
-      - name: Publish to Open VSX Registry
-        uses: HaaLeo/publish-vscode-extension@v1
-        id: publishToOpenVSX
-        with:
-          pat: ${{ secrets.OPEN_VSX_TOKEN }}
-          extensionFile: vscode_extension/aac.vsix
-          yarn: true
+      # - name: Publish to Open VSX Registry
+      #   uses: HaaLeo/publish-vscode-extension@v1
+      #   id: publishToOpenVSX
+      #   with:
+      #     pat: ${{ secrets.OPEN_VSX_TOKEN }}
+      #     extensionFile: vscode_extension/aac.vsix
+      #     yarn: true
+
+      - name: Test Push
+        run: echo "Publish Extension"
